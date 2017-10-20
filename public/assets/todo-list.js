@@ -19,7 +19,7 @@ $(document).ready(function(){
           var li = document.createElement('li');
           li.appendChild(document.createTextNode("There's an event: "));
           li.appendChild(document.createTextNode(data.item));
-          li.appendChild(document.createTextNode(" at "));
+          li.appendChild(document.createTextNode(", at "));
           li.appendChild(document.createTextNode(data.time));
           ul.appendChild(li);
         }
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
   $('#hangouts').on('click', 'li', function(){
       $(this).attr('id', 'deleteMe');
-      var item = $(this).text().replace(/ /g, "-");
+      var item = $(this).text().split(',')[0].replace(/ /g, "-");
       console.log(item);
       $.ajax({
         type: 'DELETE',
